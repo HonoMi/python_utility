@@ -1,2 +1,2 @@
-# python_utility
+# honoka_utility
 Utility scripts of python.

@@ -14,7 +14,7 @@ from collections import OrderedDict
 import random
 from datetime import datetime as dt
 import logging
-logger = logging.getLogger('utility.util')
+logger = logging.getLogger('honoka_utility.util')
 logger.addHandler(logging.StreamHandler())
 
 
