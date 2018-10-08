@@ -44,7 +44,7 @@ def exec_shell_cmd(cmd):
     stdout_data, stderr_data = p.communicate()
     stdout_msg = decode(stdout_data)
     stderr_msg = decode(stderr_data)
-    if p.returncode == 1:
+    if p.returncode != 0:
         raise ShellCommandFailedException(stderr_msg)
     else:
         return stdout_msg, stderr_msg
