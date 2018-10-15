@@ -21,8 +21,8 @@ from functional import seq
 from collections import OrderedDict, defaultdict
 from cytoolz import curry, partial, pipe, compose
 from cytoolz.curried import *
-from utility import util
-from utility import kernprof_preprocess
+from honoka_utility import util
+from honoka_utility import kernprof_preprocess
 import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
