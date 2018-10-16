@@ -7,5 +7,6 @@ setup(name='honoka_utility',
       author='HonoHono',
       # author_email='',
       # license='MIT',
+      install_requires=['chardet'],
       packages=['honoka_utility'],
       zip_safe=False)
