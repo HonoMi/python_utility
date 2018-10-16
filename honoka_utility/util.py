@@ -6,6 +6,7 @@ import re
 import sys
 import inspect
 import functools
+import chardet
 from itertools import chain
 from collections import deque
 
@@ -35,7 +36,6 @@ class ShellCommandFailedException(Exception):
 def exec_shell_cmd(cmd):
 
     def decode(data):
-        import chardet
         auto_detected_encoding = chardet.detect(data)["encoding"]
         encoding = auto_detected_encoding if auto_detected_encoding is not None else 'utf-8'
         return data.decode(encoding)
