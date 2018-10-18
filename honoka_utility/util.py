@@ -15,12 +15,14 @@ from collections import OrderedDict
 import random
 from datetime import datetime as dt
 import logging
-logger = logging.getLogger('honoka_utility.util')
-logger.addHandler(logging.StreamHandler())
+import coloredlogs
+logger = logging.getLogger(__name__)
+coloredlogs.install(level='INFO', logger=logger)
 
 
 def set_logging_config(level):
-    import logging
+    # import logging, coloredlogs
+    # coloredlogs.install()
     logging.basicConfig(level=level, format='%(levelname)s %(pathname)s:%(funcName)s:%(lineno)d    %(message)s')
 
 
