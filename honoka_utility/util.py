@@ -340,7 +340,7 @@ def count(filename):
 def dump_params(param_dic):
     params_reprs = []
     for key, value in OrderedDict(sorted(param_dic.items())).items():
-        params_reprs.extend('{0} : {1}'.format(key.__repr__(), value.__repr__()))
+        params_reprs.append('{0:<25} : {1:<10}'.format(key.__repr__(), value.__repr__()))
     return '\n'.join(params_reprs)
 
 
