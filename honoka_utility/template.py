@@ -24,8 +24,8 @@ from cytoolz.curried import *
 from honoka_utility import util
 from honoka_utility import kernprof_preprocess
 import logging
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+coloredlogs.install(level='INFO', logger=logger)
 
 
 def get_args():
