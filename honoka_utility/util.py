@@ -328,13 +328,20 @@ def count(filename):
     return num_lines, num_words
 
 
-def print_params(comment, file=sys.stdout, **param_dic):
-    print('\n', file=file)
-    print(('== ' + comment + ' =='), file=file)
+# def print_params(comment, file=sys.stdout, **param_dic):
+#     print('\n', file=file)
+#     print(('== ' + comment + ' =='), file=file)
+#     for key, value in OrderedDict(sorted(param_dic.items())).items():
+#         print((key + ' : ', value), file=file)
+#     print('==', file=file)
+#     sys.stdout.flush()
+
+
+def dump_params(param_dic):
+    params_reprs = []
     for key, value in OrderedDict(sorted(param_dic.items())).items():
-        print((key + ' : ', value), file=file)
-    print('==', file=file)
-    sys.stdout.flush()
+        params_reprs.extend('{0} : {1}'.format(key.__repr__(), value.__repr__()))
+    return '\n'.join(params_reprs)
 
 
 def fill_with_space(elem, total_char=10):
