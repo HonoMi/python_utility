@@ -69,7 +69,7 @@ def memoize(obj):
 
 
 def gzip(filename):
-    os.system('gzip -f '+filename+' 2>/dev/null')
+    os.system('gzip -f ' + filename + ' 2>/dev/null')
     return filename + '.gz'
 
 
@@ -290,12 +290,12 @@ def save_1dimlist(f_dscrpt, list, write_in_single_line=True):
 
 def save_2dimlist(f_dscrpt, list):
     for sub_list in list:
-        f_dscrpt.write(' '.join(map(str, sub_list))+'\n')
+        f_dscrpt.write(' '.join(map(str, sub_list)) + '\n')
 
 
 def save_dict(f_dscrpt, dic):
     for key in dic:
-        f_dscrpt.write(key + ':' + str(dic[key])+'\n')
+        f_dscrpt.write(key + ':' + str(dic[key]) + '\n')
 
 
 def load_dict(f_dscrpt, key_type=float):
@@ -339,7 +339,7 @@ def count(filename):
 
 def dump_params(param_dic):
     params_reprs = []
-    for key, value in OrderedDict(sorted(param_dic.items())).items():
+    for key, value in OrderedDict(sorted(param_dic.items(), key=lambda x: str(x[0]))).items():
         params_reprs.append('{0:<25} : {1:<10}'.format(key.__repr__(), value.__repr__()))
     return '\n'.join(params_reprs)
 
@@ -356,7 +356,7 @@ def make_tmp_dir(prefix=''):
     return tmp_dir_name
 
 
-def flatten_list(nested_list):
+def flatten(nested_list):
     flat_list = []
     fringe = [nested_list]
     while len(fringe) > 0:
@@ -557,7 +557,7 @@ def indent_brackets(text, indent_width=2):
         buf += char
     ret_str = ''
     for (chars, level) in str_level_pairs:
-        ret_str += ''.join(''.join([' ']*indent_width)*level) + chars
+        ret_str += ''.join(''.join([' '] * indent_width) * level) + chars
     return ret_str
 
 
