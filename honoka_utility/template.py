@@ -15,6 +15,7 @@ import sys
 import time
 import tempfile
 import json
+from pdb import set_trace
 from fn import _
 from fn.monad import Option
 from functional import seq
@@ -24,6 +25,7 @@ from cytoolz.curried import *
 from honoka_utility import util
 from honoka_utility import kernprof_preprocess
 import logging
+import coloredlogs
 logger = logging.getLogger(__name__)
 coloredlogs.install(level='INFO', logger=logger)
 
@@ -33,6 +35,7 @@ def get_args():
     parser.add_argument('--output', '-o', default=sys.stdout)
     parser.add_argument('--input', '-i', default=sys.stdin)
     parser.add_argument('--lang', '-l', choices=['ja', 'en'])
+    parser.add_argument('--params', nargs='+', default=[], help='--params hoge fuga piyo')
     parser.add_argument('-b', action='store_true', default=False)
     args = parser.parse_args()
     return args

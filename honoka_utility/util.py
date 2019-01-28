@@ -7,9 +7,10 @@ import sys
 import inspect
 import functools
 import chardet
+import random
+import string
 from itertools import chain
 from collections import deque
-
 import subprocess
 from collections import OrderedDict
 import random
@@ -602,3 +603,8 @@ def pipe(*funcs):
         else:
             return None
     return composed_func
+
+
+def random_name(n=10):
+    randlst = [random.choice(string.ascii_letters + string.digits) for i in range(n)]
+    return ''.join(randlst)
