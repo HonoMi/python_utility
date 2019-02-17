@@ -11,10 +11,10 @@ setup(
     install_requires=[
         'chardet',
         'coloredlogs'
-        # 'honoka_utility==0.0',    # private ripositoryの依存．バージョンを指定しないと動かない．
+        # 'honoka_utility==0.0',    # private repositoryの依存．バージョンを指定しないと動かない．
     ],
     dependency_links=[
-        # private ripositoryの依存．バージョンを指定しないと動かない．
+        # private repositoryの依存．バージョンを指定しないと動かない．
         # 'git+https://gitlab.rdcloud.intra.hitachi.co.jp/71389710/python_utility.git#egg=honoka_utility-0.0'
     ],
     packages=['honoka_utility'],
