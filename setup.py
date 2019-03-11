@@ -7,7 +7,7 @@ setup(
     url='https://gitlab.rdcloud.intra.hitachi.co.jp/71389710/python_utility',
     author='Honoka',
     author_email='terufumi.morishita.wp@hitachi.com',
-    license='MIT',
+    license='Hitashi R&D',
     install_requires=[
         'chardet',
         'coloredlogs'
