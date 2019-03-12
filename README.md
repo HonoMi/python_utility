@@ -1,16 +1,15 @@
-# install方法
-* setup.pyのあるディレクトリで
-    ```sh
-        pip install .
-    ```
-* あるいはgitリポジトリからインストールするには，
-    ```sh
-        pip install git+https://github.com/HonoMi/honoka_utility
-    ```
+# honoka_utility
 
 
 
-# How to use.
+## Installation
+```sh
+    pip install git+https://github.com/HonoMi/honoka_utility
+```
+
+
+
+## Example
 ```python
     from honoka_utility import util as hono_util
     hono_util.mkdir('ぴよぴよ')
