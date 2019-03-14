@@ -4,13 +4,13 @@ setup(
     name='honoka_utility',
     version='0.0',
     description='The utility modules.',
-    url='https://gitlab.rdcloud.intra.hitachi.co.jp/71389710/python_utility',
+    url='https://gitlab.rdcloud.intra.hitachi.co.jp/71389710/honoka_utility',
     author='Honoka',
     author_email='terufumi.morishita.wp@hitachi.com',
     license='Hitachi R&D',
     install_requires=[
-        'chardet',
-        'coloredlogs'
+        'coloredlogs',
+        'chardet'
         # 'planispai@git+https://gitlab.rdcloud.intra.hitachi.co.jp/hitachi-nlp/planispai',
         # 'tre2@git+https://gitlab.rdcloud.intra.hitachi.co.jp/hitachi-nlp/tre2.git@honoka_dev'     # 別ブランチの指定
     ],

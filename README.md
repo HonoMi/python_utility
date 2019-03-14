@@ -1,4 +1,5 @@
-# honoka_utility
+# Honoka utility.
+The python utilities of Honoka-chan.
 
 
 
