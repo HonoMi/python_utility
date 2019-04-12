@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-from __future__ import print_function
-from __future__ import unicode_literals
-
 import argparse
 import copy
 import datetime
@@ -14,6 +11,18 @@ import sys
 import time
 import tempfile
 import json
+from typing import Iterable
+from typing import List
+from typing import Tuple
+from typing import Dict
+from typing import Callable
+from typing import TypeVar
+from typing import Generic
+from typing import Union
+from typing import Any
+from typing import Optional
+from abc import ABC
+from abc import abstractmethod
 from pdb import set_trace
 from fn import _
 from fn.monad import Option
@@ -24,9 +33,10 @@ from cytoolz.curried import *
 from honoka_utility import util
 from honoka_utility import kernprof_preprocess
 import logging
-import coloredlogs
 logger = logging.getLogger(__name__)
-coloredlogs.install(level='INFO', logger=logger)
+# 以下はユーザ側（ログを読む側）が設定する．
+# import coloredlogs
+# coloredlogs.install(level='INFO', logger=logging.getLogger(name=None))
 
 
 def get_args():
