@@ -10,8 +10,8 @@ setup(
     author_email='terufumi.morishita.wp@hitachi.com',
     license='Hitachi R&D',
     install_requires=[
-        'coloredlogs',
         'chardet'
+        'python_log_handler@git+https://gitlab.rdcloud.intra.hitachi.co.jp/hitachi-nlp/python-log-handler'
         # 'planispai@git+https://gitlab.rdcloud.intra.hitachi.co.jp/hitachi-nlp/planispai',
         # 'tre2@git+https://gitlab.rdcloud.intra.hitachi.co.jp/hitachi-nlp/tre2.git@honoka_dev'     # 別ブランチの指定
     ],

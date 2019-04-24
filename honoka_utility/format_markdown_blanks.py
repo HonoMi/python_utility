@@ -5,8 +5,9 @@ from __future__ import unicode_literals
 
 import argparse
 import re
-from functional import seq
+
 from cytoolz import partial
+from functional import seq
 
 
 def get_args():

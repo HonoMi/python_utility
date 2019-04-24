@@ -6,8 +6,10 @@ from __future__ import unicode_literals
 import argparse
 import re
 import sys
-from utility import util
+
 import pandas
+
+from utility import util
 
 
 def get_args():

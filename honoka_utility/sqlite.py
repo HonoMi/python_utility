@@ -3,6 +3,7 @@
 # https://qiita.com/mas9612/items/a881e9f14d20ee1c0703
 
 import sqlite3
+
 from utility import sqlite_module
 
 # Connect to db.

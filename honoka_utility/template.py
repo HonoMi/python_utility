@@ -1,42 +1,50 @@
-#!/usr/bin/env python
 import argparse
 import copy
 import datetime
 import io
+import json
+import logging
 import math
 import os
 import pickle
 import re
 import sys
-import time
 import tempfile
-import json
-from typing import Iterable
-from typing import List
-from typing import Tuple
-from typing import Dict
-from typing import Callable
-from typing import TypeVar
-from typing import Generic
-from typing import Union
-from typing import Any
-from typing import Optional
+import time
 from abc import ABC
 from abc import abstractmethod
+from collections import OrderedDict
+from collections import defaultdict
 from pdb import set_trace
+from typing import Any
+from typing import Callable
+from typing import Dict
+from typing import Generic
+from typing import Iterable
+from typing import List
+from typing import Optional
+from typing import Tuple
+from typing import TypeVar
+from typing import Union
+
+from cytoolz import compose
+from cytoolz import curry
+from cytoolz import partial
+from cytoolz import pipe
+from cytoolz.curried import *
 from fn import _
 from fn.monad import Option
 from functional import seq
-from collections import OrderedDict, defaultdict
-from cytoolz import curry, partial, pipe, compose
-from cytoolz.curried import *
-from honoka_utility import util
+
 from honoka_utility import kernprof_preprocess
-import logging
+from honoka_utility import util
+# 以下はlogを使う側が行う．
+from python_log_handler import handler
+
 logger = logging.getLogger(__name__)
-# 以下はユーザ側（ログを読む側）が設定する．
-# import coloredlogs
-# coloredlogs.install(level='INFO', logger=logging.getLogger(name=None))
+
+logging.getLogger().addHandler(handler)
+
 
 
 def get_args():

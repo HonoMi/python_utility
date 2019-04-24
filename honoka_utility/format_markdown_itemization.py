@@ -6,6 +6,7 @@ from __future__ import unicode_literals
 import argparse
 import re
 import sys
+
 from fn import _
 from functional import seq
 

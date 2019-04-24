@@ -1,22 +1,24 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from __future__ import unicode_literals
-import os
-import re
-import sys
-import inspect
+
 import functools
-import chardet
-import random
-import string
-from itertools import chain
-from collections import deque
-import subprocess
-from collections import OrderedDict
-import random
-from datetime import datetime as dt
+import inspect
 import logging
+import os
+import random
+import re
+import string
+import subprocess
+import sys
+from collections import OrderedDict
+from collections import deque
+from datetime import datetime as dt
+from itertools import chain
+
+import chardet
 import coloredlogs
+
 logger = logging.getLogger(__name__)
 coloredlogs.install(level='INFO', logger=logger)
 

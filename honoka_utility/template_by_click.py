@@ -6,24 +6,31 @@ from __future__ import unicode_literals
 import copy
 import datetime
 import io
+import json
+import logging
 import math
 import os
 import pickle
 import re
 import sys
-import time
 import tempfile
-import json
+import time
+from collections import OrderedDict
+from collections import defaultdict
+
+import click
+from cytoolz import compose
+from cytoolz import curry
+from cytoolz import partial
+from cytoolz import pipe
+from cytoolz.curried import *
 from fn import _
 from fn.monad import Option
 from functional import seq
-from collections import OrderedDict, defaultdict
-from cytoolz import curry, partial, pipe, compose
-from cytoolz.curried import *
-from utility import util
+
 from utility import kernprof_preprocess
-import click
-import logging
+from utility import util
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 

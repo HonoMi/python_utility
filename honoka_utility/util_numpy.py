@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from __future__ import unicode_literals
-from utility import util
-import numpy
+
 import logging
+
+import numpy
+
+from utility import util
 
 logger = logging.getLogger('utility.util_numpy')
 logger.addHandler(logging.StreamHandler())

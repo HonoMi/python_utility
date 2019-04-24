@@ -1,4 +1,5 @@
-from multiprocessing import Process, Pipe
+from multiprocessing import Pipe
+from multiprocessing import Process
 
 
 class MyPool:
