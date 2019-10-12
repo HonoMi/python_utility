@@ -1,5 +1,4 @@
-import argparse
-from argparse import RawTextHelpFormatter
+import click
 import copy
 import datetime
 import io
@@ -42,36 +41,33 @@ from honoka_utility import util
 
 logger = logging.getLogger(__name__)
 
-def get_args():
-    parser = argparse.ArgumentParser(formatter_class=RawTextHelpFormatter)
-    parser.add_argument('--output', '-o', required=True)
-    parser.add_argument('--input', '-i', default=sys.stdin)
-    parser.add_argument('--lang', '-l', choices=['ja', 'en'])
-    parser.add_argument('--params', nargs='+', default=[], help='--params hoge fuga piyo')
-    parser.add_argument('--hoge-fuga', required=True)
-    parser.add_argument('-b', action='store_true', default=False)
 
-    parser.add_argument('--log_level',
-                        choices=['CRITICAL', 'FATAL', 'ERROR', 'WARNING', 'INFO', 'DEBUG'],
-                        default='WARNING')
-
-    args = parser.parse_args()
-    return args
-
-
-def main():
-    args = get_args()
+@click.command()
+@click.argument('output')
+@click.option('--input', '-i', default=sys.stdin)
+@click.option('--lang', '-l',
+              type=click.Choice(['ja', 'en']),
+              default='ja')
+@click.option('--params', '-p', default=[], multiple=True)
+@click.option('--bool-opt', '-b', default=False, is_flag=True)
+@click.option('--log-level',
+              type=click.Choice(['CRITICAL', 'FATAL', 'ERROR', 'WARNING', 'INFO', 'DEBUG']),
+              default='INFO')
+def main(output,
+         input,
+         lang,
+         params,
+         bool_opt,
+         log_level):
 
     # 以下はlogを使う側が行う．
     from log_handler import handler
     root_logger = logging.getLogger()
-    root_logger.setLevel(args.log_level)
+    root_logger.setLevel(log_level)
     root_logger.addHandler(handler)
 
-    print(args.output_hoge)
-
-    f_out = util.get_f_out(args.output)
-    f_in = util.get_f_in(args.input)
+    f_out = util.get_f_out(output)
+    f_in = util.get_f_in(input)
 
     for line in f_in:
         print(line.rstrip(), file=f_out)
