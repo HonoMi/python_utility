@@ -1,4 +1,5 @@
 import argparse
+from argparse import RawTextHelpFormatter
 import copy
 import datetime
 import io
@@ -38,28 +39,36 @@ from functional import seq
 
 from honoka_utility import kernprof_preprocess
 from honoka_utility import util
-# 以下はlogを使う側が行う．
-from python_log_handler import handler
 
 logger = logging.getLogger(__name__)
 
-logging.getLogger().addHandler(handler)
-
-
-
 def get_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--output', '-o', default=sys.stdout)
+    parser = argparse.ArgumentParser(formatter_class=RawTextHelpFormatter)
+    parser.add_argument('--output', '-o', required=True)
     parser.add_argument('--input', '-i', default=sys.stdin)
     parser.add_argument('--lang', '-l', choices=['ja', 'en'])
     parser.add_argument('--params', nargs='+', default=[], help='--params hoge fuga piyo')
+    parser.add_argument('--hoge-fuga', required=True)
     parser.add_argument('-b', action='store_true', default=False)
+
+    parser.add_argument('--log_level',
+                        choices=['CRITICAL', 'FATAL', 'ERROR', 'WARNING', 'INFO', 'DEBUG'],
+                        default='WARNING')
+
     args = parser.parse_args()
     return args
 
 
 def main():
     args = get_args()
+
+    # 以下はlogを使う側が行う．
+    from log_handler import handler
+    root_logger = logging.getLogger()
+    root_logger.setLevel(args.log_level)
+    root_logger.addHandler(handler)
+
+    print(args.output_hoge)
 
     f_out = util.get_f_out(args.output)
     f_in = util.get_f_in(args.input)
