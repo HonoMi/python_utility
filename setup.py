@@ -11,7 +11,7 @@ setup(
     license='Hitachi R&D',
     install_requires=[
         'chardet',
-        'git+https://gitlab.rdcloud.intra.hitachi.co.jp/hitachi-nlp/python-log-handler.git@master',
+        # 'git+https://gitlab.rdcloud.intra.hitachi.co.jp/hitachi-nlp/python-log-handler.git@master',
         # 'planispai@git+https://gitlab.rdcloud.intra.hitachi.co.jp/hitachi-nlp/planispai.git@master',
         # 'tre2@git+https://gitlab.rdcloud.intra.hitachi.co.jp/hitachi-nlp/tre2.git@honoka_dev'
     ],
