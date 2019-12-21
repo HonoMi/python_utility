@@ -1,13 +1,8 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-from __future__ import print_function
-from __future__ import unicode_literals
-
 import argparse
 import re
 
-from cytoolz import partial
-from functional import seq
+# from cytoolz import partial
+# from functional import seq
 
 
 def get_args():
@@ -21,13 +16,16 @@ def get_args():
 def main():
     args = get_args()
 
-    format_chap = partial(re.sub, '\n*\n#([^#])', '\n\n\n\n\n#\g<1>')
-    format_sec = partial(re.sub, '\n*\n##([^#])', '\n\n##\g<1>')
+    # format_chap = partial(re.sub, '\n*\n#([^#])', '\n\n\n\n\n#\g<1>')
+    # format_sec = partial(re.sub, '\n*\n##([^#])', '\n\n##\g<1>')
 
-    formatted = seq(open(args.input).read())\
-        .map(format_chap)\
-        .map(format_sec)\
-        .to_list()[0]
+    # formatted = seq(open(args.input).read())\
+    #     .map(format_chap)\
+    #     .map(format_sec)\
+    #     .to_list()[0]
+
+    formatted = re.sub('\n*\n#([^#])', '\n\n\n\n\n#\g<1>', open(args.input).read())
+    formatted = re.sub('\n*\n##([^#])', '\n\n##\g<1>', formatted)
 
     open(args.output, 'w').write(formatted)
 

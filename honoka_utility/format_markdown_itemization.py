@@ -1,14 +1,6 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-from __future__ import print_function
-from __future__ import unicode_literals
-
 import argparse
 import re
 import sys
-
-from fn import _
-from functional import seq
 
 
 def get_args():
@@ -22,7 +14,8 @@ def get_args():
 def main():
     args = get_args()
 
-    lines = seq(open(args.input).readlines()).map(_.call('rstrip'))
+    lines = [line.rstrip()
+             for line in open(args.input).readlines()]
 
     line_level = []
     level_pre = -1
