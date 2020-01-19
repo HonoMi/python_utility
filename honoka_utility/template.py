@@ -1,4 +1,3 @@
-import click
 import copy
 import datetime
 import io
@@ -27,6 +26,7 @@ from typing import Tuple
 from typing import TypeVar
 from typing import Union
 
+import click
 from cytoolz import compose
 from cytoolz import curry
 from cytoolz import partial
