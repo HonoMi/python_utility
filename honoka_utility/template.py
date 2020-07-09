@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import copy
 import datetime
 import io
@@ -60,10 +61,14 @@ def main(output,
          bool_opt,
          log_level):
 
-    # 以下はlogを使う側が行う．
-    from log_handler import handler
+    import logging
+    import colorlog
     root_logger = logging.getLogger()
-    root_logger.setLevel(log_level)
+    root_logger.setLevel(logging.INFO)
+    handler = colorlog.StreamHandler()
+    handler.setFormatter(
+        colorlog.ColoredFormatter(
+            '%(log_color)s%(asctime)s [%(process)d] %(levelname)s %(name)s %(cyan)s%(message)s'))
     root_logger.addHandler(handler)
 
     f_out = util.get_f_out(output)
