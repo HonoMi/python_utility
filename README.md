@@ -5,7 +5,7 @@ The python utilities of Honoka-chan.
 
 ## Installation
 ```sh
-pip install git+https://gitlab.rdcloud.intra.hitachi.co.jp/71389710/honoka_utility.git
+pip install git+https://github.com/HonoMi/python_utility.git@master
 ```
 
 
