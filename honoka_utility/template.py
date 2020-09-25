@@ -60,16 +60,20 @@ def main(output,
          params,
          bool_opt,
          log_level):
+    os.makedirs(os.path.dirname(output), exist_ok=True)
 
     import logging
     import colorlog
     root_logger = logging.getLogger()
     root_logger.setLevel(log_level)
-    handler = colorlog.StreamHandler()
-    handler.setFormatter(
-        colorlog.ColoredFormatter(
-            '%(log_color)s%(asctime)s [%(process)d] %(levelname)s %(name)s %(cyan)s%(message)s'))
-    root_logger.addHandler(handler)
+    stdout_handler = logging.StreamHandler()
+    file_handler = logging.FileHandler(f'{output}.log.txt')
+    for handler in [stdout_handler, file_handler]:
+        handler.setFormatter(
+            colorlog.ColoredFormatter(
+                '%(log_color)s%(asctime)s [%(process)d] %(levelname)s %(name)s %(cyan)s%(message)s'))
+        root_logger.addHandler(handler)
+    logger = logging.getLogger(__name__)
 
     f_out = util.get_f_out(output)
     f_in = util.get_f_in(input)
