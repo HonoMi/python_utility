@@ -36,6 +36,7 @@ from cytoolz.curried import *
 from fn import _
 from fn.monad import Option
 from functional import seq
+from lab import build_dirname, build_random_dirname
 
 from honoka_utility import kernprof_preprocess
 from honoka_utility import util
@@ -44,8 +45,8 @@ logger = logging.getLogger(__name__)
 
 
 @click.command()
-@click.argument('output')
-@click.option('--input', '-i', default=sys.stdin)
+@click.argument('input')
+@click.argument('output-top-dir')
 @click.option('--lang', '-l',
               type=click.Choice(['ja', 'en']),
               default='ja')
@@ -54,35 +55,33 @@ logger = logging.getLogger(__name__)
 @click.option('--log-level',
               type=click.Choice(['CRITICAL', 'FATAL', 'ERROR', 'WARNING', 'INFO', 'DEBUG']),
               default='INFO')
-def main(output,
-         input,
+def main(input,
+         output_top_dir,
          lang,
          params,
          bool_opt,
          log_level):
-    os.makedirs(os.path.dirname(output), exist_ok=True)
+    params = locals().copy()
+
+    output_dir = os.path.join(output_top_dir, build_dirname(params))
+    os.makedirs(output_dir, exist_ok=True)
 
     import logging
     import colorlog
     root_logger = logging.getLogger()
     root_logger.setLevel(log_level)
     stdout_handler = logging.StreamHandler()
-    file_handler = logging.FileHandler(f'{output}.log.txt')
+    log_file = f'{output_dir}/log.txt'
+    if os.path.exists(log_file):
+        os.remove(log_file)
+    file_handler = logging.FileHandler(log_file)
     for handler in [stdout_handler, file_handler]:
         handler.setFormatter(
             colorlog.ColoredFormatter(
                 '%(log_color)s%(asctime)s [%(process)d] %(levelname)s %(name)s %(cyan)s%(message)s'))
         root_logger.addHandler(handler)
-    logger = logging.getLogger(__name__)
 
-    f_out = util.get_f_out(output)
-    f_in = util.get_f_in(input)
-
-    for line in f_in:
-        print(line.rstrip(), file=f_out)
-
-    f_out.close()
-    f_in.close()
+    print(f'logging to {log_file}')
 
 
 if __name__ == '__main__':
